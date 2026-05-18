@@ -37,46 +37,47 @@ if user_input:
     analysis = TextBlob(user_input)
     polarity = analysis.sentiment.polarity
 
-    # Emotion responses
+        # Emotion responses
     if "angry" in user_input.lower():
-     response = "You seem angry 😠 Try taking a short break."
-    st.session_state.sentiment_count["Negative"] += 1
+        response = "You seem angry 😠 Try taking a short break."
+        st.session_state.sentiment_count["Negative"] += 1
 
-elif "scared" in user_input.lower() or "anxious" in user_input.lower():
-    response = "You seem worried 😟 Everything will be okay."
-    st.session_state.sentiment_count["Negative"] += 1
+    elif "scared" in user_input.lower() or "anxious" in user_input.lower():
+        response = "You seem worried 😟 Everything will be okay."
+        st.session_state.sentiment_count["Negative"] += 1
 
-elif "stress" in user_input.lower() or "tired" in user_input.lower():
-    response = "Looks like you're stressed 😓 Make sure to rest."
-    st.session_state.sentiment_count["Negative"] += 1
+    elif "stress" in user_input.lower() or "tired" in user_input.lower():
+        response = "Looks like you're stressed 😓 Make sure to rest."
+        st.session_state.sentiment_count["Negative"] += 1
 
-elif polarity > 0.5:
-    response = "Wow! You're sounding super excited today 🤩"
-    st.session_state.sentiment_count["Positive"] += 1
+    elif polarity > 0.5:
+        response = "Wow! You're sounding super excited today 🤩"
+        st.session_state.sentiment_count["Positive"] += 1
 
-elif polarity > 0:
-    response = "You seem happy today 😊 Keep smiling!"
-    st.session_state.sentiment_count["Positive"] += 1
+    elif polarity > 0:
+        response = "You seem happy today 😊 Keep smiling!"
+        st.session_state.sentiment_count["Positive"] += 1
 
-elif polarity < -0.5:
-    response = "That sounds really upsetting 😔 Hope things improve soon."
-    st.session_state.sentiment_count["Negative"] += 1
+    elif polarity < -0.5:
+        response = "That sounds really upsetting 😔 Hope things improve soon."
+        st.session_state.sentiment_count["Negative"] += 1
 
-elif polarity < 0:
-    response = "I'm sorry you're feeling low 😔"
-    st.session_state.sentiment_count["Negative"] += 1
+    elif polarity < 0:
+        response = "I'm sorry you're feeling low 😔"
+        st.session_state.sentiment_count["Negative"] += 1
 
-else:
-    response = "Hmm... feeling neutral today 😐"
-    st.session_state.sentiment_count["Neutral"] += 1
+    else:
+        response = "Hmm... feeling neutral today 😐"
+        st.session_state.sentiment_count["Neutral"] += 1
+
     # Store bot response
-st.session_state.messages.append(
- {"role": "assistant", "content": response}
+    st.session_state.messages.append(
+        {"role": "assistant", "content": response}
     )
 
     # Display bot response
-    #  with st.chat_message("assistant"):
-st.write(response)
+    with st.chat_message("assistant"):
+        st.write(response)
 
 st.subheader("📊 Sentiment Analytics")
 
