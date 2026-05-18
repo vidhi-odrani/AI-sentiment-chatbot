@@ -6,9 +6,23 @@ st.set_page_config(page_title="AI Sentiment Chatbot")
 st.title("AI Sentiment Chatbot")
 st.write("Chat with the bot and detect emotions in real time!")
 
+st.sidebar.title("🤖 Chatbot Controls")
+
+clear_chat = st.sidebar.button("Clear Chat")
+
 # Create chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
+    
+if clear_chat:
+    st.session_state.messages = []
+
+    st.session_state.sentiment_count = {
+        "Positive": 0,
+        "Negative": 0,
+        "Neutral": 0
+    }
+    
 if "sentiment_count" not in st.session_state:
     st.session_state.sentiment_count = {
         "Positive": 0,
@@ -79,6 +93,7 @@ if user_input:
     with st.chat_message("assistant"):
         st.write(response)
 
-st.subheader("📊 Sentiment Analytics")
+if len(st.session_state.messages) > 0:
 
-st.bar_chart(st.session_state.sentiment_count)
+    st.sidebar.subheader("📊 Sentiment Analytics")
+    st.sidebar.bar_chart(st.session_state.sentiment_count)
