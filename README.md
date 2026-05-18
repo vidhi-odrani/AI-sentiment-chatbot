@@ -1,13 +1,25 @@
 # AI Sentiment Chatbot
 
-A simple NLP-based chatbot built using Python, Streamlit, and TextBlob that detects sentiment from user input.
+An interactive NLP-powered chatbot built using Python, Streamlit, and TextBlob that detects user sentiment and responds conversationally in real time.
 
 ## Features
-- Sentiment Detection
-- Interactive Streamlit UI
-- NLP using TextBlob
+- Real-time sentiment analysis
+- Conversational chatbot UI
+- Emotion-aware responses
+- Chat history tracking
+- Live sentiment analytics dashboard
+- Sidebar controls with clear chat functionality
+- Cloud deployment using Streamlit Community Cloud
 
 ## Tech Stack
 - Python
 - Streamlit
 - TextBlob
+- Git & GitHub
+
+## Live Demo
+https://ai-sentiment-chatbot-igt4afi3jlstazndgsjhie.streamlit.app/
+
+## GitHub Repository
+https://github.com/vidhi-odrani/AI-sentiment-chatbot.git
+
