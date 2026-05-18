@@ -1,19 +1,34 @@
 import streamlit as st
 from textblob import TextBlob
 
-st.title("Sentiment Analysis Bot")
+st.set_page_config(page_title="AI Sentiment Chatbot")
 
-user_input=st.text_input("Enter your message")
+st.title("AI Sentiment Chatbot")
+
+st.write("Chat with the bot and detect emotions in real time!")
+
+# Chat input
+user_input = st.chat_input("enter your text here")
+
 if user_input:
-    analysis=TextBlob(user_input)
-    sentiment=analysis.sentiment.polarity
-    
-    if sentiment>0:
-        st.write("Positive Sentiment")
-    elif sentiment<0:
-        st.write("Negative Sentiment")
-    else:
-        st.write("Neutral Sentiment")
 
-        st.write("detected sentiment:", sentiment)
+    # Show user message
+    with st.chat_message("user"):
+        st.write(user_input)
+
+    # Sentiment analysis
+    analysis = TextBlob(user_input)
+    polarity = analysis.sentiment.polarity
+
+    # Bot response
+    if polarity > 0:
+        response = "You seem happy today:) Keep smiling!"
+    elif polarity < 0:
+        response = "I'm sorry you're feeling low :(. Hope things get better!"
+    else:
+        response = "Hmm... feeling neutral today :/"
+
+    # Show bot message
+    with st.chat_message("assistant"):
+        st.write(response)
         
